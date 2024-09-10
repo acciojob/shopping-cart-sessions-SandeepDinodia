@@ -78,6 +78,14 @@ function clearCart() {
   cart = []; // Empty cart array
   renderCart(); // Update UI
 }
+function addToCart(productId) {
+  const product = products.find((p) => p.id === productId);
+
+  if (product) {
+    cart.push(product); // Always add product to cart
+  }
+  renderCart();
+}
 
 // Event listener for "Clear Cart" button
 clearCartBtn.addEventListener("click", clearCart);
