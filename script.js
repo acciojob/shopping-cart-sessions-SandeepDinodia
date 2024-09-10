@@ -1,5 +1,3 @@
-// This is the boilerplate code given for you
-// You can modify this code
 const products = [
   { id: 1, name: "Product 1", price: 10 },
   { id: 2, name: "Product 2", price: 20 },
@@ -57,10 +55,13 @@ function renderCart() {
   sessionStorage.setItem("cart", JSON.stringify(cart));
 }
 
-// Add item to cart
+// Add item to cart without allowing duplicates
 function addToCart(productId) {
   const product = products.find((p) => p.id === productId);
-  if (product && !cart.some((item) => item.id === productId)) {
+  const isProductInCart = cart.some((item) => item.id === productId);
+  
+  // Add product to cart only if it's not already present
+  if (product && !isProductInCart) {
     cart.push(product); // Add product to cart if not already in it
   }
   renderCart();
